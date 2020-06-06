@@ -1,3 +1,4 @@
+import os
 import flask
 from flask import request, jsonify
 from subprocess import STDOUT, check_output
@@ -50,4 +51,4 @@ def run_optic():
 
     return output.decode("utf-8").replace("\n", "<br>")
 
-app.run(host='0.0.0.0', port = 5000)
+app.run(host='0.0.0.0', port = int(os.environ.get('PORT', 5000)))
