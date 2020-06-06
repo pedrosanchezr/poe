@@ -50,4 +50,4 @@ def run_optic():
 
     return output.decode("utf-8").replace("\n", "<br>")
 
-app.run()
+app.run(port = 80)
