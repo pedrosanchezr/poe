@@ -1,0 +1,27 @@
+#heading-output {
+    padding: 0;
+}
+
+.accordion .card:first-of-type {
+    border-bottom: 1px solid rgba(0,0,0,.125) !important;
+}
+
+#console-output {
+    font-size: 9pt;
+    font-family: 'Lucida Console';
+}
+
+#timeout-box {
+    margin-right: 15px;
+}
+
+.col-form-label {
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.editor-box {
+    height: 75vh;
+    font-size: 11pt;
+    font-family: 'Lucida Console';
+}
