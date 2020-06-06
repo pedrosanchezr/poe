@@ -22,6 +22,10 @@ export class EditorComponent implements OnInit {
       (res) => {
         this.output = res;
         this.alertMessage = "";
+      },
+      (err) => {
+        console.log(err);
+        this.alertMessage = err.message;
       }
     );
   }
@@ -34,11 +38,7 @@ export class EditorComponent implements OnInit {
       },
       (err) => {
         console.log(err);
-        if (err.error) {
-          this.alertMessage = err.error;
-        } else {
-          this.alertMessage = err.message;
-        }
+        this.alertMessage = err.message;
       }
     );
   }

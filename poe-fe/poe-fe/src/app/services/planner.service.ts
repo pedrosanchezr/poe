@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PlannerService {
-  private readonly base_url = "http://localhost:5000/run"
+  private readonly base_url = "https://poe-be.herokuapp.com/run"
 
   constructor(private http: HttpClient) { }
 
