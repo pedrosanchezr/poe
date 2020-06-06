@@ -87,17 +87,19 @@ def execute_planner(planner):
     else:
         return "Domain or Problem was not received"
 
-
-    # Execute the planner
-    if planner == "sgplan":
-        output = execute_sgplan(file_names, timeout)
-    elif planner == "optic":
-        output = execute_optic(file_names, timeout)
-    else:
-        print("Planner {} is not supported".format(planner))
-    
-    # Clear temp files
-    delete_temp_files(file_names)
+    try:
+        # Execute the planner
+        if planner == "sgplan":
+            output = execute_sgplan(file_names, timeout)
+        elif planner == "optic":
+            output = execute_optic(file_names, timeout)
+        else:
+            print("Planner {} is not supported".format(planner))
+    except Exception as err:
+        raise err
+    finally:
+        # Clear temp files
+        delete_temp_files(file_names)
         
     return output.decode("utf-8").replace("\n", "<br>")
         
