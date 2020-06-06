@@ -25,3 +25,8 @@
     font-size: 11pt;
     font-family: 'Lucida Console';
 }
+
+::ng-deep .CodeMirror {
+    height: calc(100% - 35px);
+    font-size: 10pt;
+}
