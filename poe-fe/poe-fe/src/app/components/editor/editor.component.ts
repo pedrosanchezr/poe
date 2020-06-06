@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PlannerService } from 'src/app/services/planner.service';
 
 @Component({
   selector: 'app-editor',
@@ -6,21 +7,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./editor.component.scss']
 })
 export class EditorComponent implements OnInit {
-  public domainContent: String;
-  public problemContent: String;
+  public domainContent: string;
+  public problemContent: string;
+  public output = "Execute your problem to get the output here...";
+  public alertMessage = "";
 
-  constructor() { }
+  constructor(private plannerService: PlannerService) { }
 
   ngOnInit(): void {
   }
 
   public executeInSGPlan(timeout: number) {
-    console.log("Clicked on sgplan");
-    console.log(timeout);
+    this.plannerService.executeInSGplan(this.domainContent, this.problemContent, timeout).subscribe(
+      (res) => {
+        this.output = res;
+        this.alertMessage = "";
+      }
+    );
   }
 
   public executeInOptic(timeout: number) {
-    console.log("Clicked on optic");
-    console.log(timeout);
+    this.plannerService.executeInOptic(this.domainContent, this.problemContent, timeout).subscribe(
+      (res) => {
+        this.output = res;
+        this.alertMessage = "";
+      },
+      (err) => {
+        console.log(err);
+        if (err.error) {
+          this.alertMessage = err.error;
+        } else {
+          this.alertMessage = err.message;
+        }
+      }
+    );
   }
 }

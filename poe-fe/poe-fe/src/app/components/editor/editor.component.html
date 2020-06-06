@@ -1,29 +1,12 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-6 editor-box">
-            Domain:
-            <ngx-codemirror
-                [(ngModel)]="domainContent"
-                [options]="{
-                    lineNumbers: true,
-                    theme: 'material',
-                    mode: 'scheme',
-                    setSize: '700px'
-                }"
-            ></ngx-codemirror>
-        </div>
-        <div class="col-6 editor-box">
-            Problem:
-            <ngx-codemirror
-                [(ngModel)]="problemContent"
-                [options]="{
-                    lineNumbers: true,
-                    theme: 'material',
-                    mode: 'scheme'
-                }"
-            ></ngx-codemirror>
-        </div>
+    <!-- ERROR ALERTS -->
+    <div *ngIf="alertMessage != ''" class="alert alert-danger" role="alert">
+        {{alertMessage}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
     </div>
+    <!-- ACTIONS -->
     <div class="row">
         <div class="col-12">
             <div class="form-group row">
@@ -43,6 +26,33 @@
             </div>
         </div>
     </div>
+    <!-- EDITORS -->
+    <div class="row">
+        <div class="col-md-12 col-xl-6 editor-box">
+            Domain:
+            <ngx-codemirror
+                [(ngModel)]="domainContent"
+                [options]="{
+                    lineNumbers: true,
+                    theme: 'material',
+                    mode: 'scheme',
+                    setSize: '700px'
+                }"
+            ></ngx-codemirror>
+        </div>
+        <div class="col-md-12 col-xl-6 editor-box">
+            Problem:
+            <ngx-codemirror
+                [(ngModel)]="problemContent"
+                [options]="{
+                    lineNumbers: true,
+                    theme: 'material',
+                    mode: 'scheme'
+                }"
+            ></ngx-codemirror>
+        </div>
+    </div>
+    <!-- OUTPUT -->
     <div class="row">
         <div class="col-12">
             <div class="accordion" id="console-output-accordion">
@@ -55,9 +65,7 @@
                     </h2>
                   </div>
                   <div id="console-output" class="collapse show" aria-labelledby="heading-output" data-parent="#console-output-accordion">
-                    <div class="card-body">
-                      Execute your problem to get the output here...
-                    </div>
+                    <div class="card-body" [innerHTML]="output"></div>
                   </div>
                 </div>
             </div>
