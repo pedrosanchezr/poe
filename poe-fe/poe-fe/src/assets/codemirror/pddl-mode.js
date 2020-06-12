@@ -26,7 +26,7 @@ CodeMirror.defineMode("scheme", function () {
         return obj;
     }
 
-    var keywords = makeKeywords("problem :domain :objects :init :constraints :goal define and or not preference sometime = + > < >= <= * / :requirements :strips :fluents :durative-actions :disjunctive-preconditions :typing :equality :preferences :predicates :functions :durative-action :parameters :duration :condition :effect :precondition :action domain at end at start - :metric minimize is-violated total-time maximize :types :process :event over all ?duration :constants :timed-initial-literals :conditional-effects :negative-preconditions :duration-inequalities");
+    var keywords = makeKeywords("problem :domain :objects :init :constraints :goal define and or not preference sometime = + > < >= <= * / :requirements :strips :fluents :durative-actions :disjunctive-preconditions :typing :equality :preferences :predicates :functions :durative-action :parameters :duration :condition :effect :precondition :action domain at end at start - :metric minimize is-violated total-time maximize :types :process :event over all ?duration :constants :timed-initial-literals :conditional-effects :negative-preconditions :duration-inequalities always");
     var indentKeys = makeKeywords("define and");
 
     function stateStack(indent, type, prev) { // represents a state stack object
