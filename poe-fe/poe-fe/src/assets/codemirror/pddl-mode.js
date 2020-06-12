@@ -15,7 +15,7 @@
 })(function(CodeMirror) {
 "use strict";
 
-CodeMirror.defineMode("scheme", function () {
+CodeMirror.defineMode("pddl", function () {
     var BUILTIN = "builtin", COMMENT = "comment", STRING = "string",
         ATOM = "atom", NUMBER = "number", BRACKET = "bracket";
     var INDENT_WORD_SKIP = 2;

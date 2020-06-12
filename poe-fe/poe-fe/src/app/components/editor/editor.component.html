@@ -10,17 +10,29 @@
     <div class="row">
         <div class="col-12">
             <div class="form-group row">
-                <label for="timeout-box" class="col-form-label" data-toggle="tooltip" data-placement="top"
-                       title="The planner will be killed after this time. Increse it if Optic is not ending on time.">Timeout for the planner:</label>
-                <input #timeout id="timeout-box" type="number" size="3" max="20" min="1" placeholder="2"/>
-                
-                <div class="dropdown">
+                <!-- Execution options -->
+                <div class="col-7">
+                    <label for="timeout-box" class="col-form-label" data-toggle="tooltip" data-placement="top"
+                            title="The planner will be killed after this time. Increse it if Optic is not ending on time.">Timeout for the planner:</label>
+                    <input #timeout id="timeout-box" type="number" size="3" max="20" min="1" placeholder="2"/>
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Send to the planner
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" (click)="executeInSGPlan(timeout.value)">SGPlan 5.2.2</a>
                     <a class="dropdown-item" (click)="executeInOptic(timeout.value)">Optic CLP</a>
+                    </div>
+                </div>
+                <!-- Selector for theme -->
+                <div class="col-5">
+                    <div class="float-right">
+                        <label for="theme-dropdown" class="col-form-label" data-toggle="tooltip" data-placement="top"
+                        title="Change the theme to use different text and background colors">Editor theme:</label>
+                        <select id="theme-dropdown" class="selectpicker" data-style="btn-info" [(ngModel)]="selectedTheme" (change)="onThemeChanged($event)">
+                            <option *ngFor="let theme of themes" [value]="theme">
+                            {{theme}}
+                            </option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -32,23 +44,14 @@
             Domain:
             <ngx-codemirror
                 [(ngModel)]="domainContent"
-                [options]="{
-                    lineNumbers: true,
-                    theme: 'material',
-                    mode: 'scheme',
-                    setSize: '700px'
-                }"
+                [options]="editorOptions"
             ></ngx-codemirror>
         </div>
         <div class="col-md-12 col-xl-6 editor-box">
             Problem:
             <ngx-codemirror
                 [(ngModel)]="problemContent"
-                [options]="{
-                    lineNumbers: true,
-                    theme: 'material',
-                    mode: 'scheme'
-                }"
+                [options]="editorOptions"
             ></ngx-codemirror>
         </div>
     </div>
