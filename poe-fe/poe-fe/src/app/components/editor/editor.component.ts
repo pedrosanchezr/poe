@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { PlannerService } from 'src/app/services/planner.service';
+import { CodemirrorComponent } from '@ctrl/ngx-codemirror';
 
 @Component({
   selector: 'app-editor',
@@ -11,6 +12,11 @@ export class EditorComponent implements OnInit {
   public problemContent: string;
   public output = 'Execute your problem to get the output here...';
   public alertMessage = '';
+  public buttonEnabledFlag = true;
+  public lastPlanner: string;
+
+  /** References to the editors */
+  @ViewChild('editor', { static: true }) editor!: CodemirrorComponent;
 
   /** Selected Theme */
   public selectedTheme = 'abcdef';
@@ -20,7 +26,12 @@ export class EditorComponent implements OnInit {
     lineNumbers: true,
     theme: 'abcdef',
     mode: 'pddl',
-    setSize: '700px'
+    setSize: '700px',
+    matchingbracket: true,
+    dragDrop: true,
+    smartIndent: true,
+    autoCloseBrackets: true,
+    matchBrackets: true
   };
 
   /** Themes available */
@@ -100,10 +111,14 @@ export class EditorComponent implements OnInit {
       (res) => {
         this.output = res;
         this.alertMessage = '';
+        // Reenable the button once the response is received
+        this.buttonEnabledFlag = true;
       },
       (err) => {
         console.log(err);
         this.alertMessage = err.message;
+        // Reenable the button if error received
+        this.buttonEnabledFlag = true;
       }
     );
   }
@@ -113,12 +128,28 @@ export class EditorComponent implements OnInit {
       (res) => {
         this.output = res;
         this.alertMessage = '';
+        // Reenable the button once the response is received
+        this.buttonEnabledFlag = true;
       },
       (err) => {
         console.log(err);
         this.alertMessage = err.message;
+        // Reenable the button if error received
+        this.buttonEnabledFlag = true;
       }
     );
+  }
+
+  public execute(selectedPlanner: string, timeout: number) {
+    // Disable the button
+    this.buttonEnabledFlag = false;
+    this.lastPlanner = selectedPlanner;
+    // Executes the planner
+    switch (selectedPlanner) {
+      case 'sgplan': this.executeInSGPlan(timeout); break;
+      case 'optic': this.executeInOptic(timeout); break;
+      default: console.log(`Planner ${selectedPlanner} not implemented`);
+    }
   }
 
   public onThemeChanged(event) {

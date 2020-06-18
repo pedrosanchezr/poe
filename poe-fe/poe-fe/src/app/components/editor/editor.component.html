@@ -15,13 +15,15 @@
                     <label for="timeout-box" class="col-form-label" data-toggle="tooltip" data-placement="top"
                             title="The planner will be killed after this time. Increse it if Optic is not ending on time.">Timeout for the planner:</label>
                     <input #timeout id="timeout-box" type="number" size="3" max="20" min="1" placeholder="2"/>
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Send to the planner
+                    <select #plannerSel class="selectpicker">
+                        <option value="sgplan" selected>SGPlan 5.2.2</option>
+                        <option value="optic">Optic CLP</option>
+                    </select>
+                    <button *ngIf="buttonEnabledFlag" type="button" class="btn btn-primary run-btn" (click)="execute(plannerSel.value, timeout.value)">Run</button>
+                    <button *ngIf="!buttonEnabledFlag" class="btn btn-primary run-btn" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Executing...
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" (click)="executeInSGPlan(timeout.value)">SGPlan 5.2.2</a>
-                    <a class="dropdown-item" (click)="executeInOptic(timeout.value)">Optic CLP</a>
-                    </div>
                 </div>
                 <!-- Selector for theme -->
                 <div class="col-5">
@@ -43,6 +45,7 @@
         <div class="col-md-12 col-xl-6 editor-box">
             Domain:
             <ngx-codemirror
+                #editor
                 [(ngModel)]="domainContent"
                 [options]="editorOptions"
             ></ngx-codemirror>
@@ -63,7 +66,7 @@
                   <div class="card-header" id="heading-output">
                     <h2 class="mb-0">
                       <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#console-output" aria-expanded="false" aria-controls="console-output">
-                        Output Console
+                        Output Console <span *ngIf="lastPlanner">(Using: {{lastPlanner}})</span>
                       </button>
                     </h2>
                   </div>
