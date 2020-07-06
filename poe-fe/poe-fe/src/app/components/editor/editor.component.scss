@@ -20,18 +20,13 @@
     margin-right: 10px;
 }
 
-.editor-box {
-    height: 75vh;
-    font-size: 11pt;
-    font-family: 'Lucida Console';
-}
-
-::ng-deep .CodeMirror {
-    height: calc(100% - 35px);
-    font-size: 10pt;
-}
-
 .run-btn {
     margin-left: 10px;
     width: 125px;
+}
+
+.editor-box {
+  height: 75vh;
+  font-size: 11pt;
+  font-family: 'Lucida Console';
 }

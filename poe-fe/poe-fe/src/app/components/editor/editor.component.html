@@ -1,3 +1,12 @@
+<!-- Toolbar -->
+<app-toolbar 
+    (domainSelected)="importFile($event, 'domain')" 
+    (problemSelected)="importFile($event, 'problem')"
+    (downloadContent)="downloadContent($event)"
+>
+</app-toolbar>
+
+<!-- Content-->
 <div class="container-fluid">
     <!-- ERROR ALERTS -->
     <div *ngIf="alertMessage != ''" class="alert alert-danger" role="alert">
@@ -43,21 +52,12 @@
     <!-- EDITORS -->
     <div class="row">
         <div class="col-md-12 col-xl-6 editor-box">
-            Domain:
-            <ngx-codemirror
-                #editor
-                [(ngModel)]="domainContent"
-                [options]="editorOptions"
-            ></ngx-codemirror>
+            <app-editor-box title="Domain" type="domain" [(content)]='domainContent' [editorOptions]="editorOptions"></app-editor-box>
         </div>
         <div class="col-md-12 col-xl-6 editor-box">
-            Problem:
-            <ngx-codemirror
-                [(ngModel)]="problemContent"
-                [options]="editorOptions"
-            ></ngx-codemirror>
+            <app-editor-box title="Problem" type="problem" [(content)]='problemContent' [editorOptions]="editorOptions"></app-editor-box>
         </div>
-    </div>
+    </div> 
     <!-- OUTPUT -->
     <div class="row">
         <div class="col-12">

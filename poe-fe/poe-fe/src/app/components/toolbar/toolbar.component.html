@@ -1,0 +1,108 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <!-- File -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          File
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" (click)="openFileExplorer('domain')">Import domain</a>
+          <input id="importDomain" class="hidden-file-loader" type="file" accept=".pddl, .txt" (change)="onFileSelected($event, 'domain')"/>
+          <a class="dropdown-item" (click)="openFileExplorer('problem')">Import problem</a>
+          <input id="importProblem" class="hidden-file-loader" type="file" accept=".pddl, .txt" (change)="onFileSelected($event, 'problem')"/>
+          <a class="dropdown-item" (click)="onDownloadContent('domain')">Download domain</a>
+          <a class="dropdown-item" (click)="onDownloadContent('problem')">Download problem</a>
+        </div>
+      </li>
+      <!-- About -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          About
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#licenseModal">License</a>
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#attribModal">Authors & attributions</a>
+        </div>
+      </li>
+    </ul>
+    <span class="navbar-text">
+      POE v1.0 Release Candidate
+    </span>
+  </div>
+</nav>
+<!-- License popup -->
+<div class="modal fade" id="licenseModal" tabindex="-1" role="dialog" aria-labelledby="licenseModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="licenseModalTitle">License</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Copyright 2020 <a href="https://www.linkedin.com/in/pedro-sanchez/">Pedro Sánchez</a> (pedro.sanchezr@edu.uah.es)<br/>
+        <br/>
+        This sofware is intended to be published under MIT license, I'm working on finishing some details and checking the license of any library or software used to confirm that this is the right choice.<br/>
+        <br/>
+        Meanwhile, feel free to use it, share it and provide feedback.
+        <!--
+        MIT License<br/>
+        <br>
+        Copyright 2020 Pedro Sánchez (pedro.sanchezr@edu.uah.es)<br/>
+        <br/>
+        Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:<br/>
+        <br/>
+        The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.<br/>
+        <br/>
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+        -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Attributions popup -->
+<div class="modal fade" id="attribModal" tabindex="-1" role="dialog" aria-labelledby="attribModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="attribModalTitle">Authors and attributions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        This software has been developed by <a href="https://www.linkedin.com/in/pedro-sanchez/">Pedro Sánchez</a> (pedro.sanchezr@edu.uah.es) as part of a free choice task for the <a href="https://www.uah.es/en/estudios/estudios-oficiales/grados/asignatura/Planificacion-Automatica-781003">Automated Planning and Scheduling</a> subject of the <a href="https://www.uah.es/en/estudios/estudios-oficiales/grados/Grado-en-Ingenieria-Informatica/">Degree in Computer Science Engineering</a> of the <a href="https://www.uah.es/">University of Alcalá de Henares</a> (Madrid)<br/>
+        <br/>
+        <b>Github repository: </b> <a href="https://github.com/pedrosanchezr/poe">https://github.com/pedrosanchezr/poe</a> (Private yet, pending to review before publishing)
+        <br/>
+        <br/>
+        <b>Planners included:</b>
+        <ul>
+          <li>SGPlan</li>
+          <ul>
+            <li><b>Authors:</b> Chih-Wei Hsu, Benjamin W. Wah, Ruoyun Huang, and Yixin Chen</li>
+            <li><a href="https://wah.cse.cuhk.edu.hk/wah/programs/SGPlan/">https://wah.cse.cuhk.edu.hk/wah/programs/SGPlan/</a></li>
+          </ul>
+          <li>Optic</li>
+          <ul>
+            <li><b>Authors:</b> J. Benton, Amanda Coles, and Andrew Coles</li>
+            <li><a href="https://nms.kcl.ac.uk/planning/software/optic.html">https://nms.kcl.ac.uk/planning/software/optic.html</a></li>
+          </ul>
+        </ul>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

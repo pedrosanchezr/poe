@@ -1,0 +1,21 @@
+{{title}}:
+<ngx-codemirror
+    #editor
+    [(ngModel)]="content"
+    [options]="editorOptions"
+></ngx-codemirror>
+<div class="dropdown">
+  <button *ngIf="type == 'domain' || 'problem'" class="btn btn-secondary dropdown-toggle" type="button" id="codeSnippet" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Insert code snippet
+  </button>
+  <!-- Domain snippets -->
+  <div *ngIf='type=="domain"' class="dropdown-menu" aria-labelledby="codeSnippet">
+    <a class="dropdown-item" (click)="insertCode('domain-squeleton')">Domain squeleton</a>
+    <a class="dropdown-item" (click)="insertCode('basic-action')">Non-durative action</a>
+    <a class="dropdown-item" (click)="insertCode('durative-action')">Durative action</a>
+  </div>
+  <!-- Problem Snippets -->
+  <div *ngIf='type=="problem"' class="dropdown-menu" aria-labelledby="codeSnippet">
+    <a class="dropdown-item" (click)="insertCode('problem-squeleton')">Problem squeleton</a>
+  </div>
+</div>

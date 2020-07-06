@@ -13,11 +13,15 @@ import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import '../assets/codemirror/pddl-mode';
 import 'codemirror/addon/edit/closebrackets.js';
 import 'codemirror/addon/edit/matchbrackets.js';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { EditorBoxComponent } from './components/editor/editor-box/editor-box.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EditorComponent
+    EditorComponent,
+    ToolbarComponent,
+    EditorBoxComponent
   ],
   imports: [
     BrowserModule,
