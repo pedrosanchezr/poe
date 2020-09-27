@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PlannerService } from 'src/app/services/planner.service';
-import { CodemirrorComponent } from '@ctrl/ngx-codemirror';
 import { environment } from 'src/environments/environment';
+import { blocksworldProblem1, blocksworldDomain1, blocksworldProblem3, blocksworldProblem2 } from 'src/app/examples/1_blocksworld';
 
 @Component({
   selector: 'app-editor',
@@ -166,6 +166,33 @@ export class EditorComponent implements OnInit {
     fakeanchor.download = `poe_${editor}.pddl`;
     fakeanchor.click();
     console.log(fakeanchor);
+  }
+
+
+  /**
+   * Load the example selected into the editors
+   *
+   * @param exampleSelected String with a valid code example
+   */
+  public loadExample(exampleSelected: string) {
+    if (true) {
+      switch (exampleSelected) {
+        case 'blocks_1':
+          this.domainContent  = blocksworldDomain1;
+          this.problemContent = blocksworldProblem1;
+          break;
+        case 'blocks_2':
+          this.domainContent  = blocksworldDomain1;
+          this.problemContent = blocksworldProblem2;
+          break;
+        case 'blocks_3':
+          this.domainContent  = blocksworldDomain1;
+          this.problemContent = blocksworldProblem3;
+          break;
+        default:
+          this.domainContent = `Sorry. The example selected is not available, try with a different one.`;
+      }
+    }
   }
 
 }

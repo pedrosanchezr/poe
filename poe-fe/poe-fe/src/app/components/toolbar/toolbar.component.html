@@ -6,10 +6,10 @@
     <ul class="navbar-nav mr-auto">
       <!-- File -->
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarFileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           File
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <div class="dropdown-menu" aria-labelledby="navbarFileDropdown">
           <a class="dropdown-item" (click)="openFileExplorer('domain')">Import domain</a>
           <input id="importDomain" class="hidden-file-loader" type="file" accept=".pddl, .txt" (change)="onFileSelected($event, 'domain')"/>
           <a class="dropdown-item" (click)="openFileExplorer('problem')">Import problem</a>
@@ -17,6 +17,22 @@
           <a class="dropdown-item" (click)="onDownloadContent('domain')">Download domain</a>
           <a class="dropdown-item" (click)="onDownloadContent('problem')">Download problem</a>
         </div>
+      </li>
+      <!-- Examples -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarExamplesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Examples
+        </a>
+        <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="navbarBlocksDropdown">
+            <li class="dropdown-submenu">
+              <a  class="dropdown-item" tabindex="-1" href="#">Blocks World (Basic)</a>
+              <ul class="dropdown-menu">
+                <a class="dropdown-item" (click)="onLoadExample('blocks_1')">Stacking blocks</a>
+                <a class="dropdown-item" (click)="onLoadExample('blocks_2')">Unstacking and stacking</a>
+                <a class="dropdown-item" (click)="onLoadExample('blocks_3')">Example with multiple goals</a>
+              </ul>
+            </li>
+          </ul>
       </li>
       <!-- About -->
       <li class="nav-item dropdown">

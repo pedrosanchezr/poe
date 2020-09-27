@@ -21,6 +21,11 @@ export class ToolbarComponent implements OnInit {
    */
   @Output() downloadContent = new EventEmitter<string>();
 
+  /** Event to be triggered when the user clicks on loading a example
+   *  Propagate: String with the exaple to be loaded for example "gripper_1"
+   */
+  @Output() loadExample = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -72,4 +77,12 @@ export class ToolbarComponent implements OnInit {
     this.downloadContent.emit(editor);
   }
 
+  /**
+   * Trigger the event to load the example choosen
+   *
+   * @param exampleSelected String with the example selected to be loaded
+   */
+  public onLoadExample(exampleSelected: string) {
+    this.loadExample.emit(exampleSelected);
+  }
 }
