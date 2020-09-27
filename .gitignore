@@ -1,1 +1,2 @@
 poe-api/temp/*.pddl
+**/__pycache__/*
