@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { globalVars } from 'src/environments/global_vars';
 
 @Component({
   selector: 'app-toolbar',
@@ -25,6 +26,9 @@ export class ToolbarComponent implements OnInit {
    *  Propagate: String with the exaple to be loaded for example "gripper_1"
    */
   @Output() loadExample = new EventEmitter<string>();
+
+  /** Version of the APP */
+  public version = `POE ${globalVars.version}`;
 
   constructor() { }
 
