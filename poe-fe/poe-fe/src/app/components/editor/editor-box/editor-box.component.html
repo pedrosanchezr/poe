@@ -1,7 +1,8 @@
 {{title}}:
 <ngx-codemirror
     #editor
-    [(ngModel)]="content"
+    [ngModel]="content"
+    (ngModelChange)="onContentChanged($event)"
     [options]="editorOptions"
 ></ngx-codemirror>
 <div class="dropdown">

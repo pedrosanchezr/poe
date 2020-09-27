@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { CodemirrorComponent } from '@ctrl/ngx-codemirror';
 import { snippets } from './code-snippets/code-snippets';
 
@@ -14,8 +14,9 @@ export class EditorBoxComponent implements OnInit {
   /** Editor type (problem/domain) */
   @Input() type: string;
 
-  /** Editor title */
+  /** Editor content input and output  for twoways binding*/
   @Input() content: string;
+  @Output() contentChange = new EventEmitter<string>();
 
   /** Object with the editor options */
   @Input() editorOptions = {
@@ -36,6 +37,14 @@ export class EditorBoxComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  /**
+   * Event to be executed when the ngModel change
+   * @param newContent 
+   */
+  public onContentChanged(newContent: string) {
+    this.contentChange.emit(newContent);
   }
 
   /**
