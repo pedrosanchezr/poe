@@ -1,6 +1,8 @@
 export const environment = {
   production: true,
 
+  api_url: 'https://poe-be.herokuapp.com',
+  
   themesAvailable: [
     'abcdef',
     '3024-day',
