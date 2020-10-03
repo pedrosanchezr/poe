@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PlannerService } from 'src/app/services/planner.service';
 import { environment } from 'src/environments/environment';
-import { blocksworldProblem1, blocksworldDomain1, blocksworldProblem3, blocksworldProblem2 } from 'src/app/examples/1_blocksworld';
+import { config } from 'rxjs';
+import { examples } from 'src/app/examples/_config';
+import { ExampleSelected } from 'src/app/models/examples/ExampleSelected';
 
 @Component({
   selector: 'app-editor',
@@ -172,27 +174,22 @@ export class EditorComponent implements OnInit {
   /**
    * Load the example selected into the editors
    *
-   * @param exampleSelected String with a valid code example
+   * @param ex <ExampleSelected> with a valid code example
    */
-  public loadExample(exampleSelected: string) {
+  public loadExample(ex: ExampleSelected) {
+    // The IF is just to remember to add a dialog to ask the user if he wants to overwrite the current content of the editors
     if (true) {
-      switch (exampleSelected) {
-        case 'blocks_1':
-          this.domainContent  = blocksworldDomain1;
-          this.problemContent = blocksworldProblem1;
-          break;
-        case 'blocks_2':
-          this.domainContent  = blocksworldDomain1;
-          this.problemContent = blocksworldProblem2;
-          break;
-        case 'blocks_3':
-          this.domainContent  = blocksworldDomain1;
-          this.problemContent = blocksworldProblem3;
-          break;
-        default:
-          this.domainContent = `Sorry. The example selected is not available, try with a different one.`;
+      if (ex.group in examples && ex.example in examples[ex.group].items) {
+        this.domainContent = examples[ex.group].items[ex.example].domain;
+        this.problemContent = examples[ex.group].items[ex.example].problem;
+      } else {
+        this.domainContent = `Sorry. The example selected is not available, try with a different one.
+          Group requested = "${ex.group}"
+          Example requested = "${ex.example}"
+
+          If this issue continues please open an issue in the repository. (Check "about" tab)
+        `;
       }
     }
   }
-
 }

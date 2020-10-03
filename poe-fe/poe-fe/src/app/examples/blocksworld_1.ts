@@ -1,5 +1,8 @@
 export const blocksworldDomain1 = `; From: https://cse3521.artifice.cc/pddl.html
 ; (Published under Creative Commons Attribution-ShareAlike 3.0 Unported License. by Joshua Eckroth)
+;
+; Note: It seems that this implementation has no (hand-empty) check.
+; Pending to create one with this check
 
 (define (domain blocksworld)
   (:requirements :strips)

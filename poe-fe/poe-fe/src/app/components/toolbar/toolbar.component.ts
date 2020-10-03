@@ -1,5 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { globalVars } from 'src/environments/global_vars';
+import { examples } from 'src/app/examples/_config';
+import { ExampleSelected } from 'src/app/models/examples/ExampleSelected';
 
 @Component({
   selector: 'app-toolbar',
@@ -23,12 +25,15 @@ export class ToolbarComponent implements OnInit {
   @Output() downloadContent = new EventEmitter<string>();
 
   /** Event to be triggered when the user clicks on loading a example
-   *  Propagate: String with the exaple to be loaded for example "gripper_1"
+   *  Propagate: <ExampleSelected> with the example to be loaded (for example group: "gripper_1", example: "simpleImplementation")
    */
-  @Output() loadExample = new EventEmitter<string>();
+  @Output() loadExample = new EventEmitter<ExampleSelected>();
 
   /** Version of the APP */
   public version = `POE ${globalVars.version}`;
+
+  /** Examples to be loaded in the "Examples" tab */
+  public exContent = examples;
 
   constructor() { }
 
@@ -84,9 +89,17 @@ export class ToolbarComponent implements OnInit {
   /**
    * Trigger the event to load the example choosen
    *
-   * @param exampleSelected String with the example selected to be loaded
+   * @param exampleSelected <ExampleSelected> with the example selected to be loaded
    */
-  public onLoadExample(exampleSelected: string) {
+  public onLoadExample(exampleSelected: ExampleSelected) {
     this.loadExample.emit(exampleSelected);
+  }
+
+  /**
+   * Return the keys of an object in order to simplify iterations on maps/dicts
+   * @param obj Object that we want to get the keys from
+   */
+  public getKeys(obj: object): string[] {
+    return Object.keys(obj);
   }
 }

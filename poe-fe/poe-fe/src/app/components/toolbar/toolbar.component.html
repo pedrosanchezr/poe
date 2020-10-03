@@ -24,12 +24,10 @@
           Examples
         </a>
         <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="navbarBlocksDropdown">
-            <li class="dropdown-submenu">
-              <a  class="dropdown-item" tabindex="-1" href="#">Blocks World (Basic)</a>
+            <li *ngFor="let key of getKeys(exContent)" class="dropdown-submenu">
+              <a  class="dropdown-item" tabindex="-1" href="#">{{exContent[key].title}}</a>
               <ul class="dropdown-menu">
-                <a class="dropdown-item" (click)="onLoadExample('blocks_1')">Stacking blocks</a>
-                <a class="dropdown-item" (click)="onLoadExample('blocks_2')">Unstacking and stacking</a>
-                <a class="dropdown-item" (click)="onLoadExample('blocks_3')">Example with multiple goals</a>
+                <a *ngFor="let itemKey of getKeys(exContent[key].items)" class="dropdown-item" (click)="onLoadExample({group: key, example: itemKey})">{{exContent[key].items[itemKey].title}}</a>
               </ul>
             </li>
           </ul>
