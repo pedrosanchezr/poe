@@ -31,7 +31,7 @@ export class ToolbarComponent implements OnInit {
   @Output() loadExample = new EventEmitter<ExampleSelected>();
 
   /** Version of the APP */
-  public version = `POE ${globalVars.version}`;
+  public version = `${globalVars.appname} ${globalVars.version}`;
 
   /** Examples to be loaded in the "Examples" tab */
   public exContent = examples;
