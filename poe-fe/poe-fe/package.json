@@ -1,6 +1,6 @@
 {
   "name": "poe-fe",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
@@ -9,7 +9,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "",
-    "heroku-postbuild": "ng build --prod"
+    "heroku-postbuild": "ng build --prod && npm run compodoc",
+
+    "compodoc": "npx compodoc -p tsconfig.json -n \"Planning Online Editor (POE)\" -d \"src\\assets\\doc\" --customLogo \"src\\assets\\logo.png\""
   },
   "engines": {
     "node": "12.16.x",
@@ -32,7 +34,8 @@
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "typescript": "~3.7.5",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "@compodoc/compodoc": "^1.1.11"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.2",
