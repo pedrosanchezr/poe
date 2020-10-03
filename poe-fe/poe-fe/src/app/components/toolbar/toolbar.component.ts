@@ -3,6 +3,7 @@ import { globalVars } from 'src/environments/global_vars';
 import { examples } from 'src/app/examples/_config';
 import { ExampleSelected } from 'src/app/models/examples/ExampleSelected';
 import { licenseLogo } from 'src/assets/logo-license';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-toolbar',
@@ -38,6 +39,10 @@ export class ToolbarComponent implements OnInit {
 
   /** Logo license text */
   public logoLicense = licenseLogo;
+
+  /** Backend URL */
+  // replacing https to http until flask restplus swagger is fixed on https
+  public backendUrl = environment.api_url.replace('https', 'http');
 
   constructor() { }
 

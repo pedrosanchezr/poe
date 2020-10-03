@@ -11,11 +11,8 @@ from execution import sgplan, optic
 DEFAULT_TIMEOUT_SECS = 2
 MAX_TIMEOUT = 20
 
-
-# Execute by planner
-def execute_planner(planner):
+def execute_planner(planner, timeout_param, domain, problem):
     """Execute the problem on the planner requested"""
-    timeout_param = request.get_json()['timeout']
 
     # Uses the timeout especified unless it's not present or higher than MAX_TIMEOUT
     if timeout_param and int(timeout_param) <= MAX_TIMEOUT:
@@ -24,7 +21,7 @@ def execute_planner(planner):
         timeout = DEFAULT_TIMEOUT_SECS
     
     # Saves the domain and problem in temp
-    file_names = files_manager.prepare_temp_files()
+    file_names = files_manager.prepare_temp_files(domain, problem)
 
     try:
         # Execute the planner
@@ -39,6 +36,10 @@ def execute_planner(planner):
     finally:
         # Clear temp files
         files_manager.delete_temp_files(file_names)
-        
-    return output.decode("utf-8").replace("\n", "<br>")
+
+    print(output)
+    if output:
+        return output.decode("utf-8").replace("\n", "<br>")
+    else:
+        return output
         

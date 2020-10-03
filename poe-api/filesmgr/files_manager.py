@@ -28,11 +28,8 @@ def delete_temp_files(file_names):
     os.remove(os.path.join(TEMP_FOLDER, file_names[0]))
     os.remove(os.path.join(TEMP_FOLDER, file_names[1]))
 
-def prepare_temp_files():
+def prepare_temp_files(domain_param, problem_param):
     """Prepare the temporary files getting generating the names and saving the content"""
-    domain_param = request.get_json()['domain']
-    problem_param = request.get_json()['problem']
-    
     # Saves the domain and problem in temp
     if domain_param and problem_param:
         file_names = get_file_names()

@@ -19,6 +19,8 @@ Simple FE and BE to execute PDDL problems on SGPlan and Optic (more planners can
 - (FE) Added note to blocksworld example as it's not implementing (hand-empty) check
 - (FE) Added compodoc to autogenerate documentation
 - (FE) Added link to compodoc documentation under "About"
+- (BE) Added swagger doc to API
+- (FE) Added link to swagger documentation under "About"
 
 
 ### Changed
@@ -26,6 +28,7 @@ Simple FE and BE to execute PDDL problems on SGPlan and Optic (more planners can
 - (FE) Moved Examples definition to a config to allow adding/removing examples in a simplified way
   - Go to /src/app/examples/
   - Edit _config.ts following the instructions of the documentation
+- (BE) Refactor to use FlaskRestplus
 
 ## [1.0.1] - 2020-09-27
 ### Added
