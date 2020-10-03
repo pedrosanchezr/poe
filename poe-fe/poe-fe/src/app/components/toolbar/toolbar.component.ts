@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { globalVars } from 'src/environments/global_vars';
 import { examples } from 'src/app/examples/_config';
 import { ExampleSelected } from 'src/app/models/examples/ExampleSelected';
+import { licenseLogo } from 'src/assets/logo-license';
 
 @Component({
   selector: 'app-toolbar',
@@ -34,6 +35,9 @@ export class ToolbarComponent implements OnInit {
 
   /** Examples to be loaded in the "Examples" tab */
   public exContent = examples;
+
+  /** Logo license text */
+  public logoLicense = licenseLogo;
 
   constructor() { }
 
