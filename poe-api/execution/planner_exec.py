@@ -14,6 +14,7 @@ MAX_TIMEOUT = 20
 
 # Execute by planner
 def execute_planner(planner):
+    """Execute the problem on the planner requested"""
     timeout_param = request.get_json()['timeout']
 
     # Uses the timeout especified unless it's not present or higher than MAX_TIMEOUT

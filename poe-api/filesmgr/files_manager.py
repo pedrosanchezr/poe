@@ -4,15 +4,15 @@ from flask import request
 
 TEMP_FOLDER = './temp'
 
-# Return a tuple with the domain and problem file names
 def get_file_names():
+    """Return a tuple with the domain and problem file names"""
     uuid_str = str(uuid.uuid4())
     domain_file_name = "domain_{}.pddl".format(uuid_str)
     problem_file_name = "problem_{}.pddl".format(uuid_str)
     return (domain_file_name, problem_file_name)
 
-# Write temp files with the domain and problem received
 def write_temp_files(file_names, domain_param, problem_param):
+    """Write temp files with the domain and problem received"""
     domain_file_name = os.path.join(TEMP_FOLDER, file_names[0])
     problem_file_name = os.path.join(TEMP_FOLDER, file_names[1])
 
@@ -23,13 +23,13 @@ def write_temp_files(file_names, domain_param, problem_param):
     with open(problem_file_name, 'w+') as problem:
         problem.write(problem_param)
 
-# Delete the temporary files
 def delete_temp_files(file_names):
+    """Delete the temporary files"""
     os.remove(os.path.join(TEMP_FOLDER, file_names[0]))
     os.remove(os.path.join(TEMP_FOLDER, file_names[1]))
 
-# Prepare the temporary files getting generating the names and saving the content
 def prepare_temp_files():
+    """Prepare the temporary files getting generating the names and saving the content"""
     domain_param = request.get_json()['domain']
     problem_param = request.get_json()['problem']
     
