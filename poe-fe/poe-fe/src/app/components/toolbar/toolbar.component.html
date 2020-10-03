@@ -20,13 +20,13 @@
       </li>
       <!-- Examples -->
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarExamplesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarExamplesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="hideExpandedGroups()">
           Examples
         </a>
         <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="navbarBlocksDropdown">
             <li *ngFor="let key of getKeys(exContent)" class="dropdown-submenu">
-              <a  class="dropdown-item" tabindex="-1" href="#">{{exContent[key].title}}</a>
-              <ul class="dropdown-menu">
+              <a [id]="key" class="dropdown-item" tabindex="-1" (click)="expandGroup($event, key)">{{exContent[key].title}}</a>
+              <ul [id]="'subgroup_' + key" class="dropdown-menu">
                 <a *ngFor="let itemKey of getKeys(exContent[key].items)" class="dropdown-item" (click)="onLoadExample({group: key, example: itemKey})">{{exContent[key].items[itemKey].title}}</a>
               </ul>
             </li>

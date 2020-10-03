@@ -102,4 +102,29 @@ export class ToolbarComponent implements OnInit {
   public getKeys(obj: object): string[] {
     return Object.keys(obj);
   }
+
+  /**
+   * Method to expand the example group dropdown to avoid using hover which is not good for touch screens
+   * @param event Click event
+   * @param key Key of the group clicked
+   */
+  public expandGroup(event: Event, key: string) {
+    // Stop the click event propagation to avoid the dropdown to close
+    event.stopPropagation();
+    // Expand the submenu
+    const subGroupItem = document.getElementById(`subgroup_${key}`);
+    subGroupItem.style.display = 'block';
+  }
+
+  /**
+   * Workaround to avoid expanded groups to remain expanded forever
+   */
+  public hideExpandedGroups() {
+    for (const key in this.exContent) {
+      if (this.exContent.hasOwnProperty(key)) {
+        const subGroupItem = document.getElementById(`subgroup_${key}`);
+        subGroupItem.style.display = 'none';
+      }
+    }
+  }
 }
