@@ -11,11 +11,19 @@ import { ExampleSelected } from 'src/app/models/examples/ExampleSelected';
   styleUrls: ['./editor.component.scss']
 })
 export class EditorComponent implements OnInit {
+  /** Content of the domain editor */
   public domainContent: string;
+  /** Content of the problem editor */
   public problemContent: string;
+  /** Content of the output console */
   public output = 'Execute your problem to get the output here...';
-  public alertMessage = '';
+  /** Variable used to display error messages */
+  public alertError = '';
+  /** Variable used to display warning messages */
+  public alertWarning = '';
+  /** Flag to determine if the run button will be enabled */
   public buttonEnabledFlag = true;
+  /** Variable to hold the name of the latest planer used */
   public lastPlanner: string;
 
   /** Selected Theme */
@@ -51,13 +59,13 @@ export class EditorComponent implements OnInit {
     this.plannerService.executeInSGplan(this.domainContent, this.problemContent, timeout).subscribe(
       (res) => {
         this.output = res;
-        this.alertMessage = '';
+        this.alertError = '';
         // Reenable the button once the response is received
         this.buttonEnabledFlag = true;
       },
       (err) => {
         console.log(err);
-        this.alertMessage = err.message;
+        this.alertError = err.message;
         // Reenable the button if error received
         this.buttonEnabledFlag = true;
       }
@@ -73,13 +81,13 @@ export class EditorComponent implements OnInit {
     this.plannerService.executeInOptic(this.domainContent, this.problemContent, timeout).subscribe(
       (res) => {
         this.output = res;
-        this.alertMessage = '';
+        this.alertError = '';
         // Reenable the button once the response is received
         this.buttonEnabledFlag = true;
       },
       (err) => {
         console.log(err);
-        this.alertMessage = err.message;
+        this.alertError = err.message;
         // Reenable the button if error received
         this.buttonEnabledFlag = true;
       }
@@ -177,19 +185,22 @@ export class EditorComponent implements OnInit {
    * @param ex <ExampleSelected> with a valid code example
    */
   public loadExample(ex: ExampleSelected) {
-    // The IF is just to remember to add a dialog to ask the user if he wants to overwrite the current content of the editors
-    if (true) {
-      if (ex.group in examples && ex.example in examples[ex.group].items) {
-        this.domainContent = examples[ex.group].items[ex.example].domain;
-        this.problemContent = examples[ex.group].items[ex.example].problem;
-      } else {
-        this.domainContent = `Sorry. The example selected is not available, try with a different one.
-          Group requested = "${ex.group}"
-          Example requested = "${ex.example}"
+    // If there is content on some editor, show a warning for this
+    if ((this.domainContent && this.domainContent.length > 0) || (this.problemContent && this.problemContent.length > 0)) {
+      this.alertWarning = 'Your editors were not empty before loading an example. Remember you can undo using (Ctrl + Z) on each editor.';
+    }
 
-          If this issue continues please open an issue in the repository. (Check "about" tab)
-        `;
-      }
+    // Load the example
+    if (ex.group in examples && ex.example in examples[ex.group].items) {
+      this.domainContent = examples[ex.group].items[ex.example].domain;
+      this.problemContent = examples[ex.group].items[ex.example].problem;
+    } else {
+      this.domainContent = `Sorry. The example selected is not available, try with a different one.
+        Group requested = "${ex.group}"
+        Example requested = "${ex.example}"
+
+        If this issue continues please open an issue in the repository. (Check "about" tab)
+      `;
     }
   }
 }
