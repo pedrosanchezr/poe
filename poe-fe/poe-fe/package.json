@@ -11,7 +11,7 @@
     "postinstall": "",
     "heroku-postbuild": "ng build --prod && npm run compodoc",
 
-    "compodoc": "npx compodoc -p tsconfig.json -n \"Planning Online Editor (POE)\" -d \"src\\assets\\doc\" --customLogo \"src\\assets\\logo.png\""
+    "compodoc": "npx compodoc -p tsconfig.json -n \"Planning Online Editor (POE)\" -d \"src/assets/doc\" --customLogo \"src/assets/logo.png\""
   },
   "engines": {
     "node": "12.16.x",
