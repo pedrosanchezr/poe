@@ -19,7 +19,7 @@ run_namespace = app.namespace('run', description='Execution Methods for the diff
 app.wsgi_app = ProxyFix(flask_app.wsgi_app)
 
 # Model with the inputs of the Execution methods
-execution_input_model = run_namespace.model('Resource', {
+execution_input_model = run_namespace.model('RunPlannerInput', {
     'timeout': fields.String,
     'domain': fields.String,
     'problem': fields.String
@@ -30,6 +30,7 @@ def internal_error(err):
     print(err)
     return "There was an error executing your request. Review the parameters added to the domain and problem. ({})".format(str(err)), 500
 
+# Method to RUN in SGPlan
 @run_namespace.route('/sgplan', methods=['POST'])
 @run_namespace.doc(
     body=execution_input_model,
@@ -48,6 +49,7 @@ class RunSGPlan(Resource):
         except Exception as err:
             abort(500, err)
 
+# Method to RUN in Optic
 @run_namespace.route('/optic', methods=['POST'])
 @run_namespace.doc(
     body=execution_input_model,
@@ -66,4 +68,6 @@ class RunOptic(Resource):
         except Exception as err:
             abort(500, err)
 
+# Start the API in any IP listening port 5000
+# TODO: Move this values to constants or config file
 flask_app.run(host='0.0.0.0', port = int(os.environ.get('PORT', 5000)))
