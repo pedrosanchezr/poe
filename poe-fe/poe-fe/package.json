@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "",
-    "heroku-postbuild": "ng build --prod && npm run compodoc",
+    "heroku-postbuild": "npm run compodoc && ng build --prod",
 
     "compodoc": "npx compodoc -p tsconfig.json -n \"Planning Online Editor (POE)\" -d \"src/assets/doc\" --customLogo \"src/assets/logo.png\""
   },
