@@ -41,9 +41,6 @@ export class EditorBoxComponent implements OnInit {
   /** Event to switch between editors */
   @Output() switchEditor = new EventEmitter();
 
-  /** Workaround to fix the VH sizes on smartphones */
-  public vh = window.innerHeight * 0.01;
-
   /**
    * Editor font size (in pt)
    */
@@ -52,8 +49,6 @@ export class EditorBoxComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    // Workaround for the VH sizes on smartphones
-    document.documentElement.style.setProperty('--vh', `${this.vh}px`);
   }
 
   /**
