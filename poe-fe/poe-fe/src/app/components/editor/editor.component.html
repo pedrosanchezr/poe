@@ -60,15 +60,31 @@
     <div class="row">
         <div class="col-md-12 editor-box" 
             [hidden]="problemFullscreen"
-            [ngClass]="{'col-xl-12': domainFullscreen, 'col-xl-6': !domainFullscreen }"
+            [ngClass]="{
+                'col-xl-12': domainFullscreen,
+                'col-xl-6': !domainFullscreen,
+                'd-none d-sm-none d-md-block': !domainSwitchVisible
+            }"
         >
-            <app-editor-box title="Domain" type="domain" [(content)]='domainContent' [editorOptions]="editorOptions" [(fullscreen)]="domainFullscreen"></app-editor-box>
+            <app-editor-box 
+                title="Domain" type="domain" [(content)]='domainContent' 
+                [editorOptions]="editorOptions" [(fullscreen)]="domainFullscreen"
+                (switchEditor)="onSwitchEditors()"
+            ></app-editor-box>
         </div>
         <div class="col-md-12 col-xl-6 editor-box" 
             [hidden]="domainFullscreen"
-            [ngClass]="{'col-xl-12': problemFullscreen, 'col-xl-6': !problemFullscreen }"
+            [ngClass]="{
+                'col-xl-12': problemFullscreen,
+                'col-xl-6': !problemFullscreen,
+                'd-none d-sm-none d-md-block': !problemSwitchVisible
+            }"
         >
-            <app-editor-box title="Problem" type="problem" [(content)]='problemContent' [editorOptions]="editorOptions" [(fullscreen)]="problemFullscreen"></app-editor-box>
+            <app-editor-box
+                title="Problem" type="problem" [(content)]='problemContent'
+                [editorOptions]="editorOptions" [(fullscreen)]="problemFullscreen"
+                (switchEditor)="onSwitchEditors()"
+            ></app-editor-box>
         </div>
     </div> 
     <!-- OUTPUT -->

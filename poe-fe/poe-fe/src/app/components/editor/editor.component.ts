@@ -29,6 +29,10 @@ export class EditorComponent implements OnInit {
   public domainFullscreen = false;
   public problemFullscreen = false;
 
+  /** Flags to know which is the visible screen in case we need to switch between one and another (Default: Domain) */
+  public domainSwitchVisible = true;
+  public problemSwitchVisible = false;
+
   /** Selected Theme */
   public selectedTheme = 'abcdef';
 
@@ -225,5 +229,13 @@ export class EditorComponent implements OnInit {
         If this issue continues please open an issue in the repository. (Check "about" tab)
       `;
     }
+  }
+
+  /**
+   * Switch the visible editor on smartphone or vertical screens in which only 1 editor must be visible
+   */
+  public onSwitchEditors() {
+    this.domainSwitchVisible = !this.domainSwitchVisible;
+    this.problemSwitchVisible = !this.problemSwitchVisible;
   }
 }

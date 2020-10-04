@@ -38,6 +38,9 @@ export class EditorBoxComponent implements OnInit {
   @Input() fullscreen = false;
   @Output() fullscreenChange = new EventEmitter<boolean>();
 
+  /** Event to switch between editors */
+  @Output() switchEditor = new EventEmitter();
+
   /**
    * Editor font size (in pt)
    */
@@ -100,5 +103,12 @@ export class EditorBoxComponent implements OnInit {
    */
   public decreaseFontSize() {
     this.fontSize--;
+  }
+
+  /**
+   * Trigger Switch editor event
+   */
+  public onSwitchEditor() {
+    this.switchEditor.emit();
   }
 }

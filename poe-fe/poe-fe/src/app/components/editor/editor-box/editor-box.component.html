@@ -2,8 +2,11 @@
   <div class="card-header">
     <h6 class="panel-title">{{title}}</h6>
     <!-- TODO: Change the ngIf to an ngClass that changes the image using styles -->
-    <img *ngIf="!fullscreen" class="editor-icon" src="assets/icons/open_in_full-24px.svg" alt="Set editor to full screen" (click)="onToogleFullscreen()"/>
-    <img *ngIf="fullscreen" class="editor-icon" src="assets/icons/close_fullscreen-24px.svg" alt="Set editor to normal size" (click)="onToogleFullscreen()"/>
+    <!-- Fullscreen buttons, hidden on small screens (Allow to show both or only 1 editor) -->
+    <img *ngIf="!fullscreen" class="editor-icon d-none d-sm-none d-md-block" src="assets/icons/open_in_full-24px.svg" alt="Set editor to full screen" (click)="onToogleFullscreen()"/>
+    <img *ngIf="fullscreen" class="editor-icon d-none d-sm-none d-md-block" src="assets/icons/close_fullscreen-24px.svg" alt="Set editor to normal size" (click)="onToogleFullscreen()"/>
+    <!-- Toogle buttons, hidden in medium to big screens (Allow to choose between one editor or the other) -->
+    <img class="editor-icon d-sm-block d-md-none" src="assets/icons/multiple_stop-24px.svg" alt="Switch editor" (click)="onSwitchEditor()"/>
     <!-- Zoom options (change font size) -->
     <img class="editor-icon" src="assets/icons/zoom_in-24px.svg" alt="Incresase font size" (click)="increaseFontSize()"/>
     <img class="editor-icon" src="assets/icons/zoom_out-24px.svg" alt="Decrease font size" (click)="decreaseFontSize()"/>

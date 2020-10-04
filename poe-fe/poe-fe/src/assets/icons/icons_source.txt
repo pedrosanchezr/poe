@@ -1,6 +1,7 @@
 Sources:
 - Fullscreen icons = Material Icons (Apache 2.0)
 - Zoom icons = Material Icons (Apache 2.0)
+- Multiple_stop = Material Icons (Apache 2.0) [Used to switch between editors in smartphones and vertical screens]
 
 Notes for collaborators:
 - Prioritize full open source repositories. For example, try not to use Glyphicons although they can legally be used.
