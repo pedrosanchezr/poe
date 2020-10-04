@@ -58,11 +58,11 @@
     </div>
     <!-- EDITORS -->
     <div class="row">
-        <div class="col-md-12 editor-box" 
-            [hidden]="problemFullscreen"
+        <div class="col-md-12 editor-box"
             [ngClass]="{
                 'col-xl-12': domainFullscreen,
                 'col-xl-6': !domainFullscreen,
+                'hidden': problemFullscreen,
                 'd-none d-sm-none d-md-block': !domainSwitchVisible
             }"
         >
@@ -72,11 +72,11 @@
                 (switchEditor)="onSwitchEditors()"
             ></app-editor-box>
         </div>
-        <div class="col-md-12 col-xl-6 editor-box" 
-            [hidden]="domainFullscreen"
+        <div class="col-md-12 col-xl-6 editor-box"
             [ngClass]="{
                 'col-xl-12': problemFullscreen,
                 'col-xl-6': !problemFullscreen,
+                'hidden': domainFullscreen,
                 'd-none d-sm-none d-md-block': !problemSwitchVisible
             }"
         >
