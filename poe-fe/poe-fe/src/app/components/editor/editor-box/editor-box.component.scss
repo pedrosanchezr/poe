@@ -1,8 +1,32 @@
+.card {
+  height: calc(98%);
+}
+.card-body {
+  height: calc(100%);
+}
+
+.card-header {
+  padding: 5px 10px 5px 10px;
+}
+
 ::ng-deep .CodeMirror {
-  height: calc(100% - 75px);
+  height: calc(100vh - 350px);
   font-size: 10pt;
 }
 
 .btn {
   margin-top: 5px;
+}
+
+.fullscreen-icon {
+  width: 20px;
+  height: 20px;
+  border: solid 1px gray;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+}
+
+.panel-title {
+  display: inline;
 }

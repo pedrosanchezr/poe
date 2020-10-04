@@ -58,11 +58,17 @@
     </div>
     <!-- EDITORS -->
     <div class="row">
-        <div class="col-md-12 col-xl-6 editor-box">
-            <app-editor-box title="Domain" type="domain" [(content)]='domainContent' [editorOptions]="editorOptions"></app-editor-box>
+        <div class="col-md-12 editor-box" 
+            [hidden]="problemFullscreen"
+            [ngClass]="{'col-xl-12': domainFullscreen, 'col-xl-6': !domainFullscreen }"
+        >
+            <app-editor-box title="Domain" type="domain" [(content)]='domainContent' [editorOptions]="editorOptions" [(fullscreen)]="domainFullscreen"></app-editor-box>
         </div>
-        <div class="col-md-12 col-xl-6 editor-box">
-            <app-editor-box title="Problem" type="problem" [(content)]='problemContent' [editorOptions]="editorOptions"></app-editor-box>
+        <div class="col-md-12 col-xl-6 editor-box" 
+            [hidden]="domainFullscreen"
+            [ngClass]="{'col-xl-12': problemFullscreen, 'col-xl-6': !problemFullscreen }"
+        >
+            <app-editor-box title="Problem" type="problem" [(content)]='problemContent' [editorOptions]="editorOptions" [(fullscreen)]="problemFullscreen"></app-editor-box>
         </div>
     </div> 
     <!-- OUTPUT -->

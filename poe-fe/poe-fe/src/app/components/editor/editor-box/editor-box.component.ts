@@ -34,6 +34,10 @@ export class EditorBoxComponent implements OnInit {
   /** References to the editor */
   @ViewChild('editor', { static: true }) editor!: CodemirrorComponent;
 
+  /** Flag to know the fullscreen state (Default = false) */
+  @Input() fullscreen = false;
+  @Output() fullscreenChange = new EventEmitter<boolean>();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -41,7 +45,7 @@ export class EditorBoxComponent implements OnInit {
 
   /**
    * Event to be executed when the ngModel change
-   * @param newContent 
+   * @param newContent Content to be propagated
    */
   public onContentChanged(newContent: string) {
     this.contentChange.emit(newContent);
@@ -69,5 +73,13 @@ export class EditorBoxComponent implements OnInit {
       default:
         console.log(`Invalid option (${option}) for code insertion`);
     }
+  }
+
+  /**
+   * Toogle the state of the fullscreen mode and emits the event
+   */
+  public onToogleFullscreen() {
+    this.fullscreen = !this.fullscreen;
+    this.fullscreenChange.emit(this.fullscreen);
   }
 }

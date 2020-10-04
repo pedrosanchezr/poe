@@ -25,6 +25,9 @@ export class EditorComponent implements OnInit {
   public buttonEnabledFlag = true;
   /** Variable to hold the name of the latest planer used */
   public lastPlanner: string;
+  /** Flags to know the "fullscreen" state of each editor */
+  public domainFullscreen = false;
+  public problemFullscreen = false;
 
   /** Selected Theme */
   public selectedTheme = 'abcdef';

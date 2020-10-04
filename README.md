@@ -8,7 +8,7 @@ Simple FE and BE to execute PDDL problems on SGPlan and Optic (more planners can
 
 ## [1.0.3] - 2020-10-04
 ### Added
-- 
+- (FE) Added fullscreen mode on editors
 
 ### Changed
 - (FE) Fixed deployment scripts in order to generate Compodoc before build so it get's packaged into the distribution

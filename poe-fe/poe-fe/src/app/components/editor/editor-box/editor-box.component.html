@@ -1,22 +1,32 @@
-{{title}}:
-<ngx-codemirror
-    #editor
-    [ngModel]="content"
-    (ngModelChange)="onContentChanged($event)"
-    [options]="editorOptions"
-></ngx-codemirror>
-<div class="dropdown">
-  <button *ngIf="type == 'domain' || 'problem'" class="btn btn-secondary dropdown-toggle" type="button" id="codeSnippet" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Insert code snippet
-  </button>
-  <!-- Domain snippets -->
-  <div *ngIf='type=="domain"' class="dropdown-menu" aria-labelledby="codeSnippet">
-    <a class="dropdown-item" (click)="insertCode('domain-squeleton')">Domain squeleton</a>
-    <a class="dropdown-item" (click)="insertCode('basic-action')">Non-durative action</a>
-    <a class="dropdown-item" (click)="insertCode('durative-action')">Durative action</a>
+<div class="card">
+  <div class="card-header">
+    <h6 class="panel-title">{{title}}</h6>
+    <!-- TODO: Change the ngIf to an ngClass that changes the image using styles -->
+    <img *ngIf="!fullscreen" class="fullscreen-icon" src="assets/icons/open_in_full-24px.svg" alt="Set editor to full screen" (click)="onToogleFullscreen()"/>
+    <img *ngIf="fullscreen" class="fullscreen-icon" src="assets/icons/close_fullscreen-24px.svg" alt="Set editor to normal size" (click)="onToogleFullscreen()"/>
   </div>
-  <!-- Problem Snippets -->
-  <div *ngIf='type=="problem"' class="dropdown-menu" aria-labelledby="codeSnippet">
-    <a class="dropdown-item" (click)="insertCode('problem-squeleton')">Problem squeleton</a>
+  <div class="card-body">
+    <ngx-codemirror
+      #editor
+      [ngModel]="content"
+      (ngModelChange)="onContentChanged($event)"
+      [options]="editorOptions"
+    ></ngx-codemirror>
+    <div class="dropdown">
+      <button *ngIf="type == 'domain' || 'problem'" class="btn btn-secondary dropdown-toggle" type="button" id="codeSnippet" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Insert code snippet
+      </button>
+      <!-- Domain snippets -->
+      <div *ngIf='type=="domain"' class="dropdown-menu" aria-labelledby="codeSnippet">
+        <a class="dropdown-item" (click)="insertCode('domain-squeleton')">Domain squeleton</a>
+        <a class="dropdown-item" (click)="insertCode('basic-action')">Non-durative action</a>
+        <a class="dropdown-item" (click)="insertCode('durative-action')">Durative action</a>
+      </div>
+      <!-- Problem Snippets -->
+      <div *ngIf='type=="problem"' class="dropdown-menu" aria-labelledby="codeSnippet">
+        <a class="dropdown-item" (click)="insertCode('problem-squeleton')">Problem squeleton</a>
+      </div>
+    </div>
   </div>
 </div>
+
