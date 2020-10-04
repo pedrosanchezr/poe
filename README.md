@@ -9,6 +9,7 @@ Simple FE and BE to execute PDDL problems on SGPlan and Optic (more planners can
 ## [1.0.3] - 2020-10-04
 ### Added
 - (FE) Added fullscreen mode on editors
+- (FE) Added options to increase/decrase fontsize of editors
 
 ### Changed
 - (FE) Fixed deployment scripts in order to generate Compodoc before build so it get's packaged into the distribution
@@ -18,6 +19,8 @@ Simple FE and BE to execute PDDL problems on SGPlan and Optic (more planners can
 
 ### Known issues / Tech debt
 - (FE + BE) Check why some extra quotes gets to the console, fix it and remove the workaround to trim them
+- (FE) Size of editor should be checked to confirm it works well in all cases.
+- (FE) On smartphones or vertical screens the editors will take most of the screen. Pending to change the behaviour of fullscreen to hide/show in those cases
 - (BE) Swagger documentation is being deployed only on HTTP, seems to be a known error/config issue of Flask-Restplus
 
 ## [1.0.2] - 2020-10-03

@@ -11,20 +11,20 @@
 
 ::ng-deep .CodeMirror {
   height: calc(100vh - 350px);
-  font-size: 10pt;
 }
 
 .btn {
   margin-top: 5px;
 }
 
-.fullscreen-icon {
-  width: 20px;
-  height: 20px;
+.editor-icon {
+  width: 25px;
+  height: 25px;
   border: solid 1px gray;
   border-radius: 5px;
   cursor: pointer;
   float: right;
+  margin-right: 4px;
 }
 
 .panel-title {

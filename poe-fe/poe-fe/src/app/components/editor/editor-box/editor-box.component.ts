@@ -38,6 +38,11 @@ export class EditorBoxComponent implements OnInit {
   @Input() fullscreen = false;
   @Output() fullscreenChange = new EventEmitter<boolean>();
 
+  /**
+   * Editor font size (in pt)
+   */
+  public fontSize = 10;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -81,5 +86,19 @@ export class EditorBoxComponent implements OnInit {
   public onToogleFullscreen() {
     this.fullscreen = !this.fullscreen;
     this.fullscreenChange.emit(this.fullscreen);
+  }
+
+  /**
+   * Increase font size
+   */
+  public increaseFontSize() {
+    this.fontSize++;
+  }
+
+  /**
+   * Decrease font size
+   */
+  public decreaseFontSize() {
+    this.fontSize--;
   }
 }
