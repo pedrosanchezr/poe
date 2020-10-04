@@ -51,6 +51,26 @@ export class EditorComponent implements OnInit {
   }
 
   /**
+   * Quick and dirty solution to remove the start and end quotes if they come in the server response
+   *
+   * @param str STR without the initial and final quotes if any
+   * @returns String with the start and end quotes removed if any
+   */
+  private trimQuotes(str: string): string {
+    let newstr = str;
+
+    if (newstr[0] === '"') {
+      newstr = newstr.substring(1);
+    }
+
+    if (newstr[newstr.length - 1] === '"') {
+      newstr = newstr.substring(0, -1);
+    }
+
+    return newstr;
+  }
+
+  /**
    * Execute the code in SGPlan planner
    *
    * @param timeout Timeout for the Backend execution
@@ -58,7 +78,7 @@ export class EditorComponent implements OnInit {
   public executeInSGPlan(timeout: number) {
     this.plannerService.executeInSGplan(this.domainContent, this.problemContent, timeout).subscribe(
       (res) => {
-        this.output = res;
+        this.output = this.trimQuotes(res);
         this.alertError = '';
         // Reenable the button once the response is received
         this.buttonEnabledFlag = true;
