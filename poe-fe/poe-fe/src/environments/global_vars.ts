@@ -1,4 +1,6 @@
+import { version } from '../../package.json';
+
 export const globalVars = {
   appname: 'POE (Planning Online Editor)',
-  version: 'v1.0.2',
+  version, // Taking the version from package.json
 };

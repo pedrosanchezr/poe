@@ -6,6 +6,20 @@ Simple FE and BE to execute PDDL problems on SGPlan and Optic (more planners can
 
 # Changelog
 
+## [1.0.3] - 2020-10-04
+### Added
+- 
+
+### Changed
+- (FE) Fixed deployment scripts in order to generate Compodoc before build so it get's packaged into the distribution
+- (FE) Taking app version from package.json to avoid misalignments between GlobalVars and package.json
+- (BE) Renamed the input models and other minor changes
+
+
+### Known issues / Tech debt
+- (FE + BE) Check why some extra quotes gets to the console, fix it and remove the workaround to trim them
+- (BE) Swagger documentation is being deployed only on HTTP, seems to be a known error/config issue of Flask-Restplus
+
 ## [1.0.2] - 2020-10-03
 ### Added
 - (FE) Added sample logos and icon simplifying how to change them and add any license of the new logos
