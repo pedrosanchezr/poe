@@ -10,7 +10,8 @@
 }
 
 ::ng-deep .CodeMirror {
-  height: calc(100vh - 350px);
+  height: calc(100vh - 350px); // Fallback for old browsers not supporting custom properties
+  height: calc(var(--vh, 1vh) * 100 - 350px);
 }
 
 .btn {
