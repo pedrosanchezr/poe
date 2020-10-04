@@ -118,6 +118,8 @@ export class ToolbarComponent implements OnInit {
    * @param key Key of the group clicked
    */
   public expandGroup(event: Event, key: string) {
+    // Hide any group already expanded
+    this.hideExpandedGroups();
     // Stop the click event propagation to avoid the dropdown to close
     event.stopPropagation();
     // Expand the submenu
