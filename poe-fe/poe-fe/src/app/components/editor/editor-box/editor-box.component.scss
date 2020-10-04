@@ -1,20 +1,16 @@
-.card {
-  height: calc(98%);
-}
-.card-body {
-  height: calc(100%);
-}
 
 .card-header {
   padding: 5px 10px 5px 10px;
 }
 
-::ng-deep .CodeMirror {
-  height: calc(100vh - 350px);
+.dropdown .btn {
+  font-size: 0.8rem;
+  padding: .2rem .5rem;
+  margin-top: 5px;
 }
 
-.btn {
-  margin-top: 5px;
+.dropdown .dropdown-item {
+  font-size: 0.8rem;
 }
 
 .editor-icon {
@@ -29,4 +25,35 @@
 
 .panel-title {
   display: inline;
+}
+
+// Media queries to resolve resolution issues on vertical screens
+// TO DO: 
+// - Check this carefully. For now I'm not focusing on testing for smartphones or tablets
+@media (max-width: 767px) {
+  .card {
+    height: calc(70vh - 5px);
+  }
+  
+  .card-body {
+    height: calc(70vh - 10px);
+  }
+  
+  ::ng-deep .CodeMirror {
+    height: calc(70vh - 100px);
+  }
+}
+
+@media (min-width: 767px) {
+  .card {
+    height: calc(75vh - 5px);
+  }
+  
+  .card-body {
+    height: calc(75vh - 10px);
+  }
+  
+  ::ng-deep .CodeMirror {
+    height: calc(75vh - 100px);
+  }
 }

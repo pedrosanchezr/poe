@@ -22,16 +22,16 @@
           <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    <!-- ACTIONS -->
-    <div class="row">
+    <!-- ACTIONS (NORMAL) -->
+    <div class="row d-none d-sm-none d-md-block">
         <div class="col-12">
             <div class="form-group row">
                 <!-- Execution options -->
                 <div class="col-7">
-                    <label for="timeout-box" class="col-form-label" data-toggle="tooltip" data-placement="top"
-                            title="The planner will be killed after this time. Increse it if Optic is not ending on time.">Timeout for the planner:</label>
+                    <label for="timeout-box" class="col-form-label timeout-label" data-toggle="tooltip" data-placement="top"
+                            title="The planner will be killed after this time. Increse it if Optic is not ending on time.">Timeout:</label>
                     <input #timeout id="timeout-box" type="number" size="3" max="20" min="1" placeholder="2"/>
-                    <select #plannerSel class="selectpicker">
+                    <select #plannerSel class="selectpicker" data-width="140px">
                         <option value="sgplan" selected>SGPlan 5.2.2</option>
                         <option value="optic">Optic CLP</option>
                     </select>
@@ -45,7 +45,7 @@
                 <div class="col-5">
                     <div class="float-right">
                         <label for="theme-dropdown" class="col-form-label" data-toggle="tooltip" data-placement="top"
-                        title="Change the theme to use different text and background colors">Editor theme:</label>
+                        title="Change the theme to use different text and background colors">Theme:</label>
                         <select id="theme-dropdown" class="selectpicker" data-style="btn-info" [(ngModel)]="selectedTheme" (change)="onThemeChanged($event)">
                             <option *ngFor="let theme of themes" [value]="theme">
                             {{theme}}
@@ -56,9 +56,26 @@
             </div>
         </div>
     </div>
+    <!-- ACTIONS (SMARTPHONE) -->
+    <div class="row d-sm-block d-md-none">
+        <div class="col-12">
+            <div class="form-group row">
+                <!-- Execution options -->
+                <div class="col-12">
+                    <label for="timeout-box" class="col-form-label timeout-label" data-toggle="tooltip" data-placement="top"
+                            title="The planner will be killed after this time. Increse it if Optic is not ending on time.">Timeout:</label>
+                    <input #timeout id="timeout-box" type="number" size="3" max="20" min="1" placeholder="2"/>
+                    <select #plannerSel class="selectpicker float-right" data-width="140px">
+                        <option value="sgplan" selected>SGPlan 5.2.2</option>
+                        <option value="optic">Optic CLP</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- EDITORS -->
     <div class="row">
-        <div class="col-md-12 editor-box"
+        <div class="col-sm-12 col-md-6 editor-box"
             [ngClass]="{
                 'col-xl-12': domainFullscreen,
                 'col-xl-6': !domainFullscreen,
@@ -72,7 +89,7 @@
                 (switchEditor)="onSwitchEditors()"
             ></app-editor-box>
         </div>
-        <div class="col-md-12 col-xl-6 editor-box"
+        <div class="col-sm-12 col-md-6 editor-box"
             [ngClass]="{
                 'col-xl-12': problemFullscreen,
                 'col-xl-6': !problemFullscreen,
@@ -87,6 +104,20 @@
             ></app-editor-box>
         </div>
     </div> 
+    <!-- RUN BUTTON ON SMARTPHONES -->
+    <div class="row d-sm-block d-md-none">
+        <div class="col-12">
+            <div class="form-group row">
+                <div class="col-12">
+                    <button *ngIf="buttonEnabledFlag" type="button" class="btn btn-primary run-btn w98" (click)="execute(plannerSel.value, timeout.value)">Run</button>
+                    <button *ngIf="!buttonEnabledFlag" class="btn btn-primary run-btn w98" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Executing...
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- OUTPUT -->
     <div class="row">
         <div class="col-12">
