@@ -5,6 +5,14 @@ Simple FE and BE to execute PDDL problems on SGPlan and Optic (more planners can
 
 
 # Changelog
+## [1.0.4] - 2020-10-05
+### Added
+- Nothing
+
+### Changed
+- (FE) Bugfix for extra quotes on output
+- (FE) Bugfix issues related to duplicate controls for smartphones layout
+- (FE) Minor fixes for better visualization on different resolutions
 
 ## [1.0.3] - 2020-10-04
 ### Added
