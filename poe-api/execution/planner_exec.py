@@ -37,7 +37,6 @@ def execute_planner(planner, timeout_param, domain, problem):
         # Clear temp files
         files_manager.delete_temp_files(file_names)
 
-    print(output)
     if output:
         return output.decode("utf-8").replace("\n", "<br>")
     else:

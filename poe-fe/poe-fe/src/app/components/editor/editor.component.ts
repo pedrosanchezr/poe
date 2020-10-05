@@ -64,14 +64,14 @@ export class EditorComponent implements OnInit {
    * @returns String with the start and end quotes removed if any
    */
   private trimQuotes(str: string): string {
-    let newstr = str;
+    let newstr = str.trim();
 
     if (newstr[0] === '"') {
       newstr = newstr.substring(1);
     }
 
     if (newstr[newstr.length - 1] === '"') {
-      newstr = newstr.substring(0, -1);
+      newstr = newstr.substring(0, newstr.length - 1);
     }
 
     return newstr;
@@ -107,7 +107,7 @@ export class EditorComponent implements OnInit {
   public executeInOptic(timeout: number) {
     this.plannerService.executeInOptic(this.domainContent, this.problemContent, timeout).subscribe(
       (res) => {
-        this.output = res;
+        this.output = this.trimQuotes(res);
         this.alertError = '';
         // Reenable the button once the response is received
         this.buttonEnabledFlag = true;
