@@ -1,8 +1,3 @@
-__IMPORTANT:__  Check for other LICENSE.md, LICENSE or LICENSE.txt files included in this repository. Third party software might have their own protection and copyrights.
-* /poe-api/bin/LICENSE.md contains information about the licenses applied to the PDDL planners included in this project.
-
----
-
 MIT License
 
 Copyright (c) 2020 [Pedro Sánchez Relaño](https://linkedin.com/in/pedro-sanchez) <pedro.sanchezr@edu.uah.es>
@@ -24,3 +19,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+__IMPORTANT:__  Check for other LICENSE.md, LICENSE or LICENSE.txt files included in this repository. Third party software might have their own protection and copyrights.
+* /poe-api/bin/LICENSE.md contains information about the licenses applied to the PDDL planners included in this project.

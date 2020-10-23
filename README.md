@@ -13,7 +13,7 @@ In future releases I plan to add more features to simplify the work, make easier
 
 ### Changed
 - Modified license and attribute pages on the site to reflect the new conditions
-- 
+  
 ### Known issues / Tech debt
 - (BE) Swagger documentation is being deployed only on HTTP, seems to be a known error/config issue of Flask-Restplus
 
