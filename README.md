@@ -1,10 +1,22 @@
 # POE (Planning Online Editor)
 Planning Online Editor
 
-Simple FE and BE to execute PDDL problems on SGPlan and Optic (more planners can be added with just a small change)
+Webbased development environment for PDDL
+It's aimed to be used by Automatted planning students to compare the results of different planners without having to compile the planners, use a Linux machine to run them, setup your environment, etc.
 
+In future releases I plan to add more features to simplify the work, make easier to undertand how it works and add content to learn the different versions of PDDL.
 
 # Changelog
+## [1.0.5] - 2020-10-23
+### Added
+- License file for the repository
+
+### Changed
+- Modified license and attribute pages on the site to reflect the new conditions
+- 
+### Known issues / Tech debt
+- (BE) Swagger documentation is being deployed only on HTTP, seems to be a known error/config issue of Flask-Restplus
+
 ## [1.0.4] - 2020-10-05
 ### Added
 - Nothing
@@ -13,9 +25,6 @@ Simple FE and BE to execute PDDL problems on SGPlan and Optic (more planners can
 - (FE) Bugfix for extra quotes on output
 - (FE) Bugfix issues related to duplicate controls for smartphones layout
 - (FE) Minor fixes for better visualization on different resolutions
-  
-### Known issues / Tech debt
-- (BE) Swagger documentation is being deployed only on HTTP, seems to be a known error/config issue of Flask-Restplus
 
 ## [1.0.3] - 2020-10-04
 ### Added
