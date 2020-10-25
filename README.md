@@ -1,6 +1,6 @@
 # POE (Planning Online Editor)
 Planning Online Editor
-<poe-fe.herokuapp.com>
+[HerokuApp with the latest code deployed](poe-fe.herokuapp.com)
 
 Web-based development environment for PDDL
 It's aimed to be used by Automatted planning students to compare the results of different planners without having to compile the planners, use a Linux machine to run them, setup your environment, etc.
